@@ -2,7 +2,7 @@
 ## SSR integration in your React app
 
 Dependencie:
-`yarn add express` or `npm install express`
+`yarn add express react-helmet` or `npm install express react-helmet`
 
 devDependencies:
 `yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals --dev` or
@@ -14,7 +14,7 @@ Folder: `./src/ssr`
 
 Scripts: `ssr:start:build-server, ssr:start:run, ssr:start, ssr:build:server, ssr:build`
 
-TIP: in `App.js` add import `React`
+TIP: in `App.js` add import `React` and `Helmet`
 
 ## Available Scripts
 
