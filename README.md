@@ -1,10 +1,40 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## SSR integration in your React app
+
+Dependencie:
+`yarn add express` or `npm install express`
+
+devDependencies:
+`yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals --dev` or
+`npm install @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals --save-dev`
+
+Files: `.babelrc.json, webpack.build.js, webpack.server.js`
+
+Folder: `./src/ssr`
+
+Scripts: `ssr:start:build-server, ssr:start:run, ssr:start, ssr:build:server, ssr:build`
+
+TIP: in `App.js` add import `React`
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm run ssr:start`
+
+Runs the app in the server side rendering in development mode.\
+Open [http://localhost:3006](http://localhost:3006) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm run ssr:build`
+
+Builds the app (server side rendering) for production to the `build-ssr` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
 ### `npm start`
 
