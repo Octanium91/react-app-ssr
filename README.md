@@ -6,7 +6,7 @@ Dependencie:
 
 devDependencies:
 `yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals --dev` or
-`npm install @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals --save-dev`
+`npm install @babel/core @babel/preset-env @babel/preset-react babel-loader copy-webpack-plugin css-loader nodemon npm-run-all url-loader webpack webpack-cli webpack-node-externals mini-css-extract-plugin --save-dev`
 
 Files: `.babelrc.json, webpack.build.js, webpack.server.js`
 

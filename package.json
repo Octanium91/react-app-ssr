@@ -7,9 +7,11 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "express": "^4.18.1",
+    "mini-css-extract-plugin": "^2.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -18,10 +20,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ssr:start:build-server": "webpack --config webpack.server.js --mode=development -w",
-    "ssr:start:run": "nodemon ./.ssr-server-cache/index.js",
+    "ssr:start:build-server": "webpack --config webpack.server.js -w",
+    "ssr:start:run": "nodemon ./.ssr-server-cache/server.js",
     "ssr:start": "npm-run-all --parallel build ssr:start:*",
-    "ssr:build:server": "webpack --config webpack.build.js --mode=production",
+    "ssr:build:server": "webpack --config webpack.build.js",
     "ssr:build": "npm-run-all build ssr:build:server"
   },
   "eslintConfig": {
