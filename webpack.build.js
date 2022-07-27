@@ -8,7 +8,7 @@ const browserConfig = {
     mode: "production",
     entry: "./src/ssr/client.js",
     output: {
-        path: path.resolve('.ssr-server-cache'),
+        path: path.resolve('./build-ssr'),
         filename: "client.js",
     },
     module: {
@@ -31,7 +31,7 @@ const serverConfig = {
     target: "node",
     externals: [nodeExternals()],
     output: {
-        path: path.resolve('.ssr-server-cache'),
+        path: path.resolve('./build-ssr'),
         filename: 'server.js'
     },
     module: {
@@ -48,7 +48,7 @@ const serverConfig = {
         }),
         new CopyPlugin({
             patterns: [
-                { from: "build", to: "build" }
+                { from: "build", to: "." }
             ],
         }),
     ],

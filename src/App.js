@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import {Helmet} from "react-helmet";
 
-function App() {
+function App(props) {
+  const { renderMode } = props
+  console.log("render mode:", renderMode)
   return (
     <div className="App">
       <header className="App-header">

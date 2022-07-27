@@ -2,7 +2,7 @@ import React from "react";
 import { hydrateRoot } from 'react-dom/client';
 import IndexSSR from "../indexSSR";
 
-hydrateRoot(document.documentElement,
+hydrateRoot(document.getElementById('root'),
     <React.StrictMode>
-        <IndexSSR />
+        <IndexSSR renderMode={"SPA"} />
     </React.StrictMode>)

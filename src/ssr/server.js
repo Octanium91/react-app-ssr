@@ -14,16 +14,13 @@ const app = express();
 
 const routes = ['/']
 
-app.use(express.static('./.ssr-server-cache'))
-
 app.get('*', (req, res, next) => {
     const activeRoute = routes.find((route) => matchPath(req.url, route))
-
     if (activeRoute) {
         const clientScript = `<script src="/client.js" defer></script>`
         const app = ReactDOMServer.renderToString(
             <StaticRouter location={req.url}>
-                <IndexSSR/>
+                <IndexSSR renderMode={"SSR"}/>
             </StaticRouter>
         );
         const helmet = Helmet.renderStatic();
@@ -40,7 +37,7 @@ app.get('*', (req, res, next) => {
             shtml = shtml.replace(`<title></title>`, helmet.title.toString())
             shtml = shtml.replace(`<meta name="h-meta"/>`, helmet.meta.toString())
             shtml = shtml.replace(`<meta name="h-link"/>`, helmet.link.toString())
-            // shtml = shtml.replace(`<script ssr="client.js"></script>`, clientScript.toString())
+            shtml = shtml.replace(`<script ssr="client.js"></script>`, clientScript.toString())
 
             return res.send(
                 shtml.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
@@ -51,7 +48,12 @@ app.get('*', (req, res, next) => {
     }
 });
 
-app.use(express.static('./build'));
+if (process.env.NODE_ENV==="development") {
+    app.use(express.static('./.ssr-server-cache'))
+    app.use(express.static('./build'));
+} else {
+    app.use(express.static('./'));
+}
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
