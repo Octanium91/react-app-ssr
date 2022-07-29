@@ -4,27 +4,6 @@ const nodeExternals = require("webpack-node-externals");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// const browserConfig = {
-//     mode: "production",
-//     entry: "./src/ssr/client.js",
-//     output: {
-//         path: path.resolve('./build-ssr'),
-//         filename: "client.js",
-//     },
-//     module: {
-//         rules: [
-//             {test: /\.(js|jsx)$/, use: 'babel-loader'},
-//             {test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: 'url-loader'},
-//             { test: /\.css$/, use: ["css-loader"] },
-//         ],
-//     },
-//     plugins: [
-//         new webpack.DefinePlugin({
-//             __isBrowser__: "true",
-//         }),
-//     ],
-// };
-
 const serverConfig = {
     mode: "production",
     entry: "./src/ssr/server.js",
@@ -34,11 +13,14 @@ const serverConfig = {
         path: path.resolve('./build-ssr'),
         filename: 'server.js'
     },
+    resolve: {
+        extensions: ["*", ".js", ".jsx"],
+    },
     module: {
         rules: [
             {test: /\.(js|jsx)$/, use: 'babel-loader'},
-            {test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: 'url-loader'},
-            { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
+            {test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg)$/, use: 'url-loader'},
+            {test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"]},
         ],
     },
     plugins: [
