@@ -32,7 +32,7 @@ You may also see any lint errors in the console.
 
 ### `npm run ssr:build`
 
-Builds the app (server side rendering) for production to the `build-ssr` folder.\
+Builds the app (server side rendering) for production to the `build-ssr` folder, app port `80`.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
