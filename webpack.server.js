@@ -27,9 +27,6 @@ const serverConfig = {
             "React": "react",
         }),
         new MiniCssExtractPlugin(),
-        new webpack.DefinePlugin({
-            __isBrowser__: "false",
-        })
     ],
 };
 module.exports = [serverConfig];

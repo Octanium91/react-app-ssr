@@ -28,9 +28,6 @@ const serverConfig = {
             "React": "react",
         }),
         new MiniCssExtractPlugin(),
-        new webpack.DefinePlugin({
-            __isBrowser__: "false",
-        }),
         new CopyPlugin({
             patterns: [
                 { from: "build", to: "." }
