@@ -1,6 +1,8 @@
 
 ## SSR integration in your React app
 
+ReactJS: `18`, Webpack: `5`
+
 Dependencie:
 `yarn add express react-helmet` or `npm install express react-helmet`
 
@@ -14,7 +16,7 @@ Folder: `./src/ssr`
 
 Scripts: `ssr:start:build-server, ssr:start:run, ssr:start, ssr:build:server, ssr:build`
 
-TIP: in `App.js` add import `React` and `Helmet`
+TIP: use `Helmet` for set meta data
 
 ## Available Scripts
 
