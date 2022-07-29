@@ -9,7 +9,7 @@ import { matchPath } from "react-router-dom";
 import IndexSSR from '../../src/IndexSSR';
 import {Helmet} from "react-helmet";
 
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || process.env.NODE_ENV==="production"?80:3006;
 const app = express();
 
 const routes = ['/']
@@ -17,15 +17,14 @@ const routes = ['/']
 app.get('*', (req, res, next) => {
     const activeRoute = routes.find((route) => matchPath(req.url, route))
     if (activeRoute) {
-        const clientScript = `<script src="/client.js" defer></script>`
         const app = ReactDOMServer.renderToString(
             <StaticRouter location={req.url}>
-                <IndexSSR renderMode={"SSR"}/>
+                <IndexSSR />
             </StaticRouter>
         );
         const helmet = Helmet.renderStatic();
 
-        const indexFile = path.resolve('./build/index.html');
+        const indexFile = path.resolve(process.env.NODE_ENV==="production"?"./index.html":"./build/index.html");
         fs.readFile(indexFile, 'utf8', (err, data) => {
             if (err) {
                 console.error('Something went wrong:', err);
@@ -37,7 +36,6 @@ app.get('*', (req, res, next) => {
             shtml = shtml.replace(`<title></title>`, helmet.title.toString())
             shtml = shtml.replace(`<meta name="h-meta"/>`, helmet.meta.toString())
             shtml = shtml.replace(`<meta name="h-link"/>`, helmet.link.toString())
-            shtml = shtml.replace(`<script ssr="client.js"></script>`, clientScript.toString())
 
             return res.send(
                 shtml.replace('<div id="root"></div>', `<div id="root">${app}</div>`)

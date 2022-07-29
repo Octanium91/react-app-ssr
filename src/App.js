@@ -1,11 +1,9 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Helmet} from "react-helmet";
 
-function App(props) {
-  const { renderMode } = props
-  console.log("render mode:", renderMode)
+function App() {
+  console.log("render mode:", !!((typeof window !== "undefined" && window.document && window.document.createElement))?"SPA":"SSR")
   return (
     <div className="App">
       <header className="App-header">
