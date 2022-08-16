@@ -15,10 +15,10 @@ const app = express();
 const routes = ['/']
 
 app.get('*', (req, res, next) => {
-    const activeRoute = routes.find((route) => matchPath(req.url, route))
+    const activeRoute = routes.find((route) => matchPath({path: route}, req.path))
     if (activeRoute) {
         const app = ReactDOMServer.renderToString(
-            <StaticRouter location={req.url}>
+            <StaticRouter location={activeRoute}>
                 <IndexSSR />
             </StaticRouter>
         );
