@@ -18,7 +18,7 @@ app.get('*', (req, res, next) => {
     const activeRoute = routes.find((route) => matchPath({path: route}, req.path))
     if (activeRoute) {
         const app = ReactDOMServer.renderToString(
-            <StaticRouter location={activeRoute}>
+            <StaticRouter location={req.url}>
                 <IndexSSR />
             </StaticRouter>
         );
